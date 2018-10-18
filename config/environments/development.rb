@@ -38,9 +38,6 @@ Rails.application.configure do
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
 
-  ENV["SES_SMTP_USERNAME"] = '***REMOVED***A' # Replace with your SMTP username
-  ENV["SES_SMTP_PASSWORD"] = '***REMOVED***' # Replace with your SMTP password
-
   config.action_mailer.smtp_settings = {
     :address => "email-smtp.us-east-1.amazonaws.com",
     :port => 587,
