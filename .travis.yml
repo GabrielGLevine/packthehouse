@@ -20,8 +20,8 @@ deploy:
   access_key_id: $ACCESS_ID
   secret_access_key: $SECRET_KEY
   region: us-east-1
-  app: unfuckyourfinances
-  env: unfuckyourfinances-env
+  app: packthehouse
+  env: packthehouse-env
   bucket_name: elasticbeanstalk-us-east-1-381263952706
   on:
-    repo: GabrielGLevine/unfuckyourfinances
+    repo: GabrielGLevine/packthehouse

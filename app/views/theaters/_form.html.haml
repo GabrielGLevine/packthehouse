@@ -1,0 +1,16 @@
+= form_for @theater do |f|
+  - if @theater.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@theater.errors.count, "error")} prohibited this theater from being saved:"
+      %ul
+        - @theater.errors.full_messages.each do |message|
+          %li= message
+
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :contact
+    = f.text_field :contact
+  .actions
+    = f.submit 'Save'
