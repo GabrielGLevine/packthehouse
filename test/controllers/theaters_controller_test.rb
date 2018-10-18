@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'test_helper'
 
 class TheatersControllerTest < ActionDispatch::IntegrationTest
@@ -5,17 +7,17 @@ class TheatersControllerTest < ActionDispatch::IntegrationTest
     @theater = theaters(:one)
   end
 
-  test "should get index" do
+  test 'should get index' do
     get theaters_url
     assert_response :success
   end
 
-  test "should get new" do
+  test 'should get new' do
     get new_theater_url
     assert_response :success
   end
 
-  test "should create theater" do
+  test 'should create theater' do
     assert_difference('Theater.count') do
       post theaters_url, params: { theater: { contact: @theater.contact, name: @theater.name } }
     end
@@ -23,22 +25,22 @@ class TheatersControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to theater_url(Theater.last)
   end
 
-  test "should show theater" do
+  test 'should show theater' do
     get theater_url(@theater)
     assert_response :success
   end
 
-  test "should get edit" do
+  test 'should get edit' do
     get edit_theater_url(@theater)
     assert_response :success
   end
 
-  test "should update theater" do
+  test 'should update theater' do
     patch theater_url(@theater), params: { theater: { contact: @theater.contact, name: @theater.name } }
     assert_redirected_to theater_url(@theater)
   end
 
-  test "should destroy theater" do
+  test 'should destroy theater' do
     assert_difference('Theater.count', -1) do
       delete theater_url(@theater)
     end

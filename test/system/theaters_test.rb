@@ -1,45 +1,47 @@
-require "application_system_test_case"
+# frozen_string_literal: true
+
+require 'application_system_test_case'
 
 class TheatersTest < ApplicationSystemTestCase
   setup do
     @theater = theaters(:one)
   end
 
-  test "visiting the index" do
+  test 'visiting the index' do
     visit theaters_url
-    assert_selector "h1", text: "Theaters"
+    assert_selector 'h1', text: 'Theaters'
   end
 
-  test "creating a Theater" do
+  test 'creating a Theater' do
     visit theaters_url
-    click_on "New Theater"
+    click_on 'New Theater'
 
-    fill_in "Contact", with: @theater.contact
-    fill_in "Name", with: @theater.name
-    click_on "Create Theater"
+    fill_in 'Contact', with: @theater.contact
+    fill_in 'Name', with: @theater.name
+    click_on 'Create Theater'
 
-    assert_text "Theater was successfully created"
-    click_on "Back"
+    assert_text 'Theater was successfully created'
+    click_on 'Back'
   end
 
-  test "updating a Theater" do
+  test 'updating a Theater' do
     visit theaters_url
-    click_on "Edit", match: :first
+    click_on 'Edit', match: :first
 
-    fill_in "Contact", with: @theater.contact
-    fill_in "Name", with: @theater.name
-    click_on "Update Theater"
+    fill_in 'Contact', with: @theater.contact
+    fill_in 'Name', with: @theater.name
+    click_on 'Update Theater'
 
-    assert_text "Theater was successfully updated"
-    click_on "Back"
+    assert_text 'Theater was successfully updated'
+    click_on 'Back'
   end
 
-  test "destroying a Theater" do
+  test 'destroying a Theater' do
     visit theaters_url
     page.accept_confirm do
-      click_on "Destroy", match: :first
+      click_on 'Destroy', match: :first
     end
 
-    assert_text "Theater was successfully destroyed"
+    assert_text 'Theater was successfully destroyed'
   end
 end
