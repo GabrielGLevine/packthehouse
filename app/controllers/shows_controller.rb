@@ -2,13 +2,14 @@
 
 class ShowsController < ApplicationController
   before_action :set_show, only: %i[show edit update destroy]
-  before_action :authenticate_user!
+  before_action :authenticate_user!, only: %i[edit update destroy create]
 
   # GET /shows
   # GET /shows.json
   def index
-    @shows = Show.where('time < ?', Time.now + 1.hour)
-                 .where('time > ?', Time.now - 1.day)
+    # @shows = Show.where('time > ?', Time.now - 1.hour)
+    #              .where('time < ?', Time.now + 1.day)
+   @shows = Show.all
   end
 
   # GET /shows/1

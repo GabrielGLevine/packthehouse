@@ -8,5 +8,7 @@ class CreateTheaters < ActiveRecord::Migration[5.2]
 
       t.timestamps
     end
+
+    add_foreign_key :theaters, :shows
   end
 end
