@@ -10,6 +10,7 @@ class ShowsController < ApplicationController
     # @shows = Show.where('time > ?', Time.now - 1.hour)
     #              .where('time < ?', Time.now + 1.day)
    @shows = Show.all
+   @is_admin = current_user&.is_admin
   end
 
   # GET /shows/1
@@ -35,7 +36,7 @@ class ShowsController < ApplicationController
         format.html { redirect_to @show, notice: 'Show was successfully created.' }
         format.json { render :show, status: :created, location: @show }
       else
-        format.html { render :new }
+        format.html { render :index }
         format.json { render json: @show.errors, status: :unprocessable_entity }
       end
     end
@@ -74,6 +75,7 @@ class ShowsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def show_params
-    params.require(:show).permit(:name, :time, :location, :tickets, :price)
+    params.require(:show).permit(:name, :time, :location, :tickets, :price,
+                                :industry_price, :theater_id, :link)
   end
 end

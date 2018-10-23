@@ -1,24 +1,29 @@
-%h1 Shows
+.container
+  %h1 Shows
 
-%table
-  %thead
-    %tr
-      %th Name
-      %th Time
-      %th Location
-      %th Tickets
-      %th Price
-      %th Industry Price
-      %th Theater
-      %th
-
-  %tbody
-    - @shows.each do |show|
+  %table.table
+    %thead
       %tr
-        %td= link_to show.name, show.link
-        %td= show.time.to_formatted_s(:long_ordinal)
-        %td= show.location
-        %td= show.tickets
-        %td= number_to_currency(show.price, unit: '$')
-        %td= number_to_currency(show.industry_price, unit: '$')
-        %td= show.theater&.name
+        %th Name
+        %th Time
+        %th Location
+        %th Tickets
+        %th Price
+        %th Industry Price
+        %th Theater
+        %th
+
+    %tbody
+      - @shows.each do |show|
+        %tr
+          %td= link_to show.name, show.link
+          %td= show.time.to_formatted_s(:long_ordinal)
+          %td= show.location
+          %td= show.tickets
+          %td= number_to_currency(show.price, unit: '$')
+          %td= number_to_currency(show.industry_price, unit: '$')
+          %td= show.theater&.name
+
+.container
+  - if @is_admin
+    = link_to 'New Show', new_show_path

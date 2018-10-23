@@ -41,13 +41,15 @@ gem 'jbuilder', '~> 2.5'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
-gem 'bulma-rails'
 gem 'devise'
 gem 'haml'
 gem 'haml-rails'
-gem 'devise'
-gem 'bulma-rails'
 gem 'activeadmin'
+#gem 'bulma-rails'
+gem 'bootstrap'
+gem 'jquery-rails'
+gem "bootstrap_form", ">= 4.0.0.alpha1"
+gem 'bh'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

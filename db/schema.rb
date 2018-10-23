@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_20_005418) do
+ActiveRecord::Schema.define(version: 2018_10_23_042826) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -59,11 +59,11 @@ ActiveRecord::Schema.define(version: 2018_10_20_005418) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "user_theaters", id: false, force: :cascade do |t|
+  create_table "theaters_users", id: false, force: :cascade do |t|
     t.integer "user_id"
     t.integer "theater_id"
-    t.index ["theater_id"], name: "index_user_theaters_on_theater_id"
-    t.index ["user_id"], name: "index_user_theaters_on_user_id"
+    t.index ["theater_id"], name: "index_theaters_users_on_theater_id"
+    t.index ["user_id"], name: "index_theaters_users_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -74,6 +74,7 @@ ActiveRecord::Schema.define(version: 2018_10_20_005418) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "is_admin"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

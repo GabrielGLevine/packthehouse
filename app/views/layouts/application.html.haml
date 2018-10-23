@@ -4,11 +4,10 @@
     %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %title Pack the House
     %meta{content: "width=device-width, initial-scale=1", name: "viewport"}/
-    %link{href: "https://unpkg.com/bulmaswatch/flatly/bulmaswatch.min.css", rel: "stylesheet"}/
     = csrf_meta_tags
     = csp_meta_tag
-    = stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
-    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body{"data-controller" => "main"}
     = render 'layouts/navbar'
     - if notice

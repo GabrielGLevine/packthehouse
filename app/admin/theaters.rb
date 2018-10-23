@@ -11,5 +11,6 @@ ActiveAdmin.register Theater do
     end
   end
 
-  permit_params :name, :contact
+  permit_params :name, :contact, :theater_id
+  belongs_to :admin_user
 end
