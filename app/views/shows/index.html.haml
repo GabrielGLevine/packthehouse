@@ -14,16 +14,17 @@
         %th
 
     %tbody
-      - @shows.each do |show|
-        %tr
-          %td= link_to show.name, show.link
-          %td= show.time.to_formatted_s(:long_ordinal)
-          %td= show.location
-          %td= show.tickets
-          %td= number_to_currency(show.price, unit: '$')
-          %td= number_to_currency(show.industry_price, unit: '$')
-          %td= show.theater&.name
+      - if @shows
+        - @shows.each do |show|
+          %tr
+            %td= link_to show.name, show.link
+            %td= show.formatted_time
+            %td= show.location
+            %td= show.tickets
+            %td= show.formatted_price
+            %td= show.formatted_industry_price
+            %td= show.theater_name
 
 .container
   - if @is_admin
-    = link_to 'New Show', new_show_path
+    = button_to 'New Show', new_show_path, class: "btn btn-primary", method: :get

@@ -2,6 +2,7 @@
 
 class TheatersController < ApplicationController
   before_action :set_theater, only: %i[show edit update destroy]
+  before_action :require_admin!, only: %i[edit update new destroy create]
 
   # GET /theaters
   # GET /theaters.json

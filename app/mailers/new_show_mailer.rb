@@ -4,6 +4,6 @@ class NewShowMailer < ApplicationMailer
   def new_show
     emails = User.pluck(:email)
     @show = params[:show]
-    mail(bcc: emails, subject: 'New Show from PacktheHouse')
+    mail(bcc: emails, subject: "Ticket for #{@show.name}")
   end
 end

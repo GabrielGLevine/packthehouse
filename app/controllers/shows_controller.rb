@@ -3,14 +3,13 @@
 class ShowsController < ApplicationController
   before_action :set_show, only: %i[show edit update destroy]
   before_action :authenticate_user!, only: %i[edit update destroy create]
+  before_action :require_admin!, only: %i[edit update new destroy create]
 
   # GET /shows
   # GET /shows.json
   def index
-    # @shows = Show.where('time > ?', Time.now - 1.hour)
-    #              .where('time < ?', Time.now + 1.day)
-   @shows = Show.all
-   @is_admin = current_user&.is_admin
+    @shows = Show.where('time BETWEEN ? and ?', Time.zone.now - 1.hour, Time.zone.now + 1.day)
+    @is_admin = current_user&.is_admin
   end
 
   # GET /shows/1
@@ -31,13 +30,11 @@ class ShowsController < ApplicationController
     @show = Show.new(show_params)
 
     respond_to do |format|
-      if @show.save
+      if current_user.is_admin && @show.save
         NewShowMailer.with(show: @show).new_show.deliver_later
-        format.html { redirect_to @show, notice: 'Show was successfully created.' }
-        format.json { render :show, status: :created, location: @show }
+        format.html { redirect_to shows_url, notice: 'Show was successfully created.' }
       else
-        format.html { render :index }
-        format.json { render json: @show.errors, status: :unprocessable_entity }
+        format.html { render :new,  notice: "Show was not created because #{@show.errors.messages}."  }
       end
     end
   end
@@ -71,6 +68,12 @@ class ShowsController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_show
     @show = Show.find(params[:id])
+  end
+
+  def require_admin!
+    unless current_user&.is_admin
+      format.html { redirect_to root_url, notice: 'Permission denied.' }
+    end
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.

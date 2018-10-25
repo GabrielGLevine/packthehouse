@@ -1,0 +1,5 @@
+class ChangeShowsTimeColumnFromTimeToDatetime < ActiveRecord::Migration[5.2]
+  def change
+    change_column :shows, :time, :datetime
+  end
+end
