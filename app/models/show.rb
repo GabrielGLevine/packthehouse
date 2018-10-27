@@ -5,7 +5,7 @@ class Show < ApplicationRecord
   belongs_to :theater
   validates :name, :theater, :location, :time, :price, :link, presence: true
   validate :date_in_range
-  validates_uniqueness_of :name, conditions: -> { where("created_at > DATETIME('now', '-12 hours')") }
+  validates_uniqueness_of :name, conditions: -> { where("created_at > now() - interval '12 hours'") }
 
   def formatted_time
     time.strftime('%B %e, %l:%M %p')

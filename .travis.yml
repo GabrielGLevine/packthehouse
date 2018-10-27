@@ -3,6 +3,8 @@ rvm:
 - 2.5.1
 install:
 - bundle install
+services:
+  - postgresql
 cache: bundler
 deploy:
   provider: elasticbeanstalk
